@@ -21,7 +21,14 @@ use Illuminate\Support\Facades\Route;
 // // Stores a student in the list 
 // Route::post('/students', [StudentController::class, 'store']); 
 
+
 Route::resource('students', StudentController::class); 
+
+// search student by name 
+Route::get('/students/searchByName/{name}', [StudentController::class, 'searchByName']);
+
+// search student by email
+Route::get('/students/searchByEmail/{email}', [StudentController::class, 'searchByEmail']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

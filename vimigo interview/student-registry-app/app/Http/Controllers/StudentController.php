@@ -60,4 +60,26 @@ class StudentController extends Controller
     {
         //
     }
+
+    /**
+     * Search student by name.
+     *
+     * @param  str  $name
+     * @return \Illuminate\Http\Response
+     */
+    public function searchByName($name)
+    {
+        return Student::where('name', 'like', '%'.$name.'%')->get();
+    }
+
+    /**
+     * Search student by email.
+     *
+     * @param  str  $email
+     * @return \Illuminate\Http\Response
+     */
+    public function searchByEmail($email)
+    {
+        return Student::where('email', 'like', '%'.$email.'%')->get();
+    }
 }
