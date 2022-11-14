@@ -15,4 +15,11 @@ class Student extends Model
         'address',
         'studycourse'
     ];
+
+    protected $hidden = [
+    'email',
+    'studycourse',
+    'created_at',
+    'updated_at',
+    'id'];
 }
