@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\StudentsImport; 
 class StudentController extends Controller
 {
 
@@ -48,7 +49,9 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id); 
+        $student->update($request->all());
+        return $student;
     }
 
     /**
@@ -59,7 +62,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Student::destroy($id);
     }
 
     /**
@@ -82,5 +85,16 @@ class StudentController extends Controller
     public function searchByEmail($email)
     {
         return Student::where('email', 'like', '%'.$email.'%')->get();
+    }
+
+    /**
+     * Used to allow creating new students from csv/excel files 
+     */
+    public function createStudents(Request $request)
+    {   
+        $path = $request->file('file')->getRealPath();
+        Excel::import(new StudentsImport, $path);
+
+       return redirect('/')->with('success', 'Students Import Successfully!');
     }
 }

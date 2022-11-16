@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\WebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('bulk.create');
 });
+
+Route::get('/bulk.create',[WebController::class, 'uploadStudentsView'])->name('create');
+Route::get('/search.name',[WebController::class, 'searchNameView'])->name('searchByName');
+Route::get('/search.email',[WebController::class, 'searchEmailView'])->name('searchByEmail');
