@@ -73,8 +73,7 @@ class StudentController extends Controller
      */
     public function searchByName($name)
     {
-        $students = Student::where('name', 'like', '%'.$name.'%')->get();
-        return redirect()->route('searchByName')->with(['students' => $students]);
+        return Student::where('name', 'like', '%'.$name.'%')->get();
     }
 
     /**

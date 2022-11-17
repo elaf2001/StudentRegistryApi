@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('students', StudentController::class); 
 
 // search student by name 
-Route::get('/students/searchByName/{name}', [StudentController::class, 'searchByName'])->name('search.name');
+Route::get('/students/searchByName/{name}', [StudentController::class, 'searchByName']);
 
 // search student by email
 Route::get('/students/searchByEmail/{email}', [StudentController::class, 'searchByEmail']);
