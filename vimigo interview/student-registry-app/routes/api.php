@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,11 +24,9 @@ Route::get('/students/searchByName/{name}', [StudentController::class, 'searchBy
 // search student by email
 Route::get('/students/searchByEmail/{email}', [StudentController::class, 'searchByEmail']);
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
-//users 
-Route::prefix('/user')->group( function(){
-    Route::post('/login', [LoginController::class, 'login']); 
-}); 
+// Uploading by bulk 
+Route::post('uploadFile', [StudentController::class, 'createStudents'] );
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});

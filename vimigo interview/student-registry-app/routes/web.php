@@ -23,4 +23,4 @@ Route::get('/bulk.create',[WebController::class, 'uploadStudentsView'])->name('c
 Route::get('/search.name',[WebController::class, 'searchNameView'])->name('searchByName');
 Route::get('/search.email',[WebController::class, 'searchEmailView'])->name('searchByEmail');
 
-Route::post('/upload', [StudentController::class, 'createStudents'])->name('upload');
+Route::post('/upload-users', [StudentController::class, 'createStudents'])->name('upload');
