@@ -22,3 +22,5 @@ Route::get('/', function () {
 Route::get('/bulk.create',[WebController::class, 'uploadStudentsView'])->name('create');
 Route::get('/search.name',[WebController::class, 'searchNameView'])->name('searchByName');
 Route::get('/search.email',[WebController::class, 'searchEmailView'])->name('searchByEmail');
+
+Route::post('/upload', [StudentController::class, 'createStudents'])->name('upload');

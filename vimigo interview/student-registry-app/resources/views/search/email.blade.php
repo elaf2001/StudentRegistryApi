@@ -13,6 +13,9 @@
 
         </div>
     </form>
+    @if(empty($students))
+        
+    @else
     <div style="display: flex; align-items: center; justify-content: center;"> 
         <table  class="mdl-data-table mdl-js-data-table" style="width=100%">
             <thead>
@@ -28,4 +31,5 @@
             </tbody>
         </table>
     </div>
+    @endif
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\StudentController;
 
 class WebController extends Controller
 {
@@ -10,6 +11,7 @@ class WebController extends Controller
      * Returns the view to upload a file in order to create students by bulk 
      */
     public function uploadStudentsView(Request $request){
+        
         return view('/bulk.create');
     }
 

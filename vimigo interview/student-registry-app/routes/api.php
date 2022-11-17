@@ -14,18 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// // Returns a list of all the students 
-// Route::get('/students', [StudentController::class, 'index'] );
-
-
-// // Stores a student in the list 
-// Route::post('/students', [StudentController::class, 'store']); 
-
-
 Route::resource('students', StudentController::class); 
 
 // search student by name 
-Route::get('/students/searchByName/{name}', [StudentController::class, 'searchByName']);
+Route::get('/students/searchByName/{name}', [StudentController::class, 'searchByName'])->name('search.name');
 
 // search student by email
 Route::get('/students/searchByEmail/{email}', [StudentController::class, 'searchByEmail']);

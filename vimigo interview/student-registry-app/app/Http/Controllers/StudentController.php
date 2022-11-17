@@ -73,7 +73,8 @@ class StudentController extends Controller
      */
     public function searchByName($name)
     {
-        return Student::where('name', 'like', '%'.$name.'%')->get();
+        $students = Student::where('name', 'like', '%'.$name.'%')->get();
+        return redirect()->route('searchByName')->with(['students' => $students]);
     }
 
     /**
@@ -92,9 +93,9 @@ class StudentController extends Controller
      */
     public function createStudents(Request $request)
     {   
-        $path = $request->file('file')->getRealPath();
-        Excel::import(new StudentsImport, $path);
+        
+        Excel::import(new StudentsImport, $request->file);
 
-       return redirect('/')->with('success', 'Students Import Successfully!');
+        return redirect()->route('create')->with('success', 'Students Import Successfully!');
     }
 }
